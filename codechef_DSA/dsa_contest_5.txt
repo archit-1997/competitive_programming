@@ -1,0 +1,36 @@
+DSA contest 5
+---------------
+
+Always try to think about numbers in terms of their prime factorization.
+LCM : It is basically a max function of the powers of the elements
+HCF : It is a min function of the power of the elements
+-------------------------------------------------------------------------------
+What is the complexity of O(factors(n))?
+Ans : n/2 is a loose bound
+    sqrt(n) is a tight bound
+    a more tighter bound is log2(n)
+
+
+So if you are asked about the complexity of 
+1 to N
+factors(i)
+
+This is not going to be sqrt(n)
+
+It will be more of log(n) or log2(n)
+
+--------------------------------------------------------------------------------
+NOTE : for a number x, we have approximatedly sqrt(x) square numbers which are less than x
+
+What is the complexity of the code of sieve of eratothenes ?
+Ans : 
+n/2 + n/3 + n/5 + n/7 + ......+ n/p (where p is a prime number)
+
+this comes out to be O(Nlog(log(N)))
+
+Study about merge sort trees as it will be implemented in question count k primes if k would have been much much larger.
+
+Matrix exponentiation of square matrices
+------------------------------------------
+
+Motivation is fibonacci where you need to compute the series in O(log(n)) instead of O(n)
