@@ -1,11 +1,7 @@
-
 /**
- * @author      : Archit
- * @cf-handle 	: archit1997
- * @GitHub 		: archit-1997
- * @email 		: architsingh456@gmail.com
- * @Contest		: Educational Codeforces Round 96
- * @Problem     : String Deletion 
+ * @author      : archit1997
+ * created  	: Friday Oct 16, 2020 20:37:28 IST
+ * problem    	: String deletion
  */
  
 #include <bits/stdc++.h>
@@ -35,82 +31,63 @@ using namespace __gnu_pbds;
 
 #define ps(x,y) 		fixed<<setprecision(y)<<x
 #define w(tt)    		ll tt; cin>>tt; while(tt--)
-#define FOR(i,a,b) 		for(ll i=a;i<b;i++)
+#define FL(i,a,b) 		for(ll i=a;i<b;i++)
+#define RFL(i,a,b)		for(ll i=a;i>=b;i--)
+#define mp(a,b)			make_pair({a,b})
 #define ma(arr,n,type)  type *arr=new type[n]
 #define pbds tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update>
 
-void init()
-{
+void solve(){
+
+	w(tt){
+        ll n;cin>>n;
+        string s;cin>>s;
+        
+        V vis(n,0);
+        ll i=0,j=0,c=0;
+
+        while(i<n){
+            //reach the first position where the adjacent elements are equal
+            while(i<n-1){
+                if(s[i]==s[i+1])
+                    break;
+                i++;
+            }
+            vis[i]=1;
+            char ch=s[j];
+            while(j<n){
+                if(vis[j] || s[j]==ch)
+                    j++;
+                else
+                    break;
+            }
+            i=max(j,i+1);
+            c++;
+        }
+        ll tmp=0;
+        FL(k,j,n){
+            if(!vis[k])
+                tmp++;
+        }
+        c+=(tmp+1)/2;
+        cout<<c<<"\n";
+	}
+
+}
+
+int main(){
+
 	ios_base::sync_with_stdio(false); 
 	cin.tie(NULL); cout.tie(NULL);
 	
-	//freopen("input.txt","r",stdin);
-	//freopen("output.txt","w",stdout);
-}
+	if(freopen("input.txt","r",stdin)==0)
+		cerr<<"No input file";
+		
+	if(freopen("output.txt","w",stdout)==0)
+		cerr<<"No output file";
 
-int main()
-{
+	solve();	
 	
-	init();
-
-    w(tt){
-        ll n;cin>>n;
-        string s;cin>>s;
-        V v;
-        ll count=1;
-        FOR(i,1,n){
-            if(s[i]==s[i-1])
-                count++;
-            else{
-                v.pb(count);
-                count=1;
-            }
-        }
-        v.pb(count);
-        
-
-        //now we need to operate on this vector v
-        ll ans=0;
-        while(1){
-            if(v.size()==0)
-                break;
-            if(v.size()==1){
-                ans++;
-                break;
-            }
-            //if the first character is greater than 1, then operate on it and then proceed
-            if(v[0]>1){
-                ans++;
-                v.erase(v.begin());
-            }
-            else{
-                //find if there is any number greater than 1 on the right side
-                ll len=v.size(),flag=0,index=-1;
-                FOR(i,1,len){
-                    if(v[i]>1){
-                        index=i;
-                        flag=1;
-                        break;
-                    }
-                }
-                if(flag==0){
-                    //we have a greater element on the right side
-                    if(len%2==1)
-                        len++;
-                    ans+=(len/2);
-                    break;
-                }
-                else{
-                    v[index]--;
-                    v.erase(v.begin());
-                    ans++;
-                }
-            }
-        }
-        cout<<ans<<"\n";
-    }	
-ll
-    lkdsffjasdfjdsafjsd fsdfjlkadjfladjasdflksadfj a
 	return 0;
 }
 
