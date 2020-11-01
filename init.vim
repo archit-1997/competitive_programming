@@ -14,7 +14,8 @@
 set nu
 set relativenumber
 syntax on
-colorscheme base16-solarized-dark
+" colorscheme zellner
+colorscheme darktheme
 let g:NERDTreeWinPos = "right"
 set foldmethod=indent
 set clipboard=unnamed
@@ -29,9 +30,6 @@ set numberwidth=5
 set linespace=3
 set splitright
 set termguicolors
-"set guifont=Consolas:h12
-"set guifont=Cascadia\ Mono\ PL:h12
-let g:auto_save = 1
 "-----------------------------------------------
 
 " Enable folding
@@ -84,7 +82,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " enable powerline fonts
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16_vim'
+let g:airline_theme = 'hybrid'
 
 " Always show tabs
 set showtabline=10
@@ -114,7 +112,7 @@ let mapleader = " "
 nmap <leader>so	:source $MYVIMRC<CR>
 nmap <leader>s 	:w<CR>
 nmap <leader>q	:wq<CR>
-nmap <leader>fq	:qa!<CR>
+nmap <leader>f	:qa!<CR>
 nmap <leader>t 	:NERDTreeToggle<CR>
 nmap <leader>d  :1,$d<CR>
 
@@ -137,7 +135,7 @@ nmap <leader>n	:tabnew<CR>
 let g:ale_lint_on_enter = 1
 let g:ale_linters = {'cpp': ['clang']}
 let g:ale_lint_on_text_changed = 'always'
-let g:ale_lint_delay=200
+let g:ale_lint_delay=100
 
 
 "-----------------------------------------
@@ -156,7 +154,6 @@ let g:ctrlp_working_path_mode = 'ra'
 "----------------------------------------------
 
 call plug#begin(stdpath('data') . '/plugged')
-Plug '907th/vim-auto-save'
 Plug 'Shougo/vimproc.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -166,14 +163,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ervandew/supertab'
-Plug 'chriskempson/base16-vim'
-Plug 'lambdalisue/vim-fullscreen'
 Plug 'tibabit/vim-templates'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
+Plug 'kamykn/dark-theme.vim'
 call plug#end()
 "---------------------------------------------
 
