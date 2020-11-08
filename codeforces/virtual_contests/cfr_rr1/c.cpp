@@ -1,7 +1,7 @@
 /**
  * @author      : archit1997
- * created  	: Friday Oct 30, 2020 09:53:16 IST
- * problem    	: 
+ * created  	: Saturday Nov 07, 2020 11:58:26 IST
+ * problem    	: ABBB
  */
  
 #include <bits/stdc++.h>
@@ -39,8 +39,23 @@ using namespace __gnu_pbds;
 
 void solve(){
 
-	
+    w(tt){
+        string s;cin>>s;
+        ll n=s.size();
+        stack<char> st;
+        FL(i,0,n){
+            if(s[i]=='A')
+                st.push(s[i]);
+            else{
+                if(st.empty())
+                    st.push(s[i]);
+                else
+                    st.pop();
+            }
+        }
 
+        cout<<st.size()<<"\n";
+    }
 }
 
 int main(){
