@@ -25,6 +25,8 @@ set softtabstop=4
 set linebreak
 set showbreak=+++
 set autoindent
+set smartindent
+set cindent
 set copyindent
 set numberwidth=5
 set linespace=3
