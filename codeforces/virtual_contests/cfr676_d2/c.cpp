@@ -1,7 +1,7 @@
 /**
  * @author      : archit1997
- * created  	: Monday Nov 16, 2020 10:35:15 IST
- * problem    	: XORwice
+ * created  	: Monday Nov 16, 2020 14:10:32 IST
+ * problem    	: Palindromifier
  */
  
 #include <bits/stdc++.h>
@@ -39,11 +39,29 @@ using namespace __gnu_pbds;
 
 int solve(){
 
-	w(tt){
-        ll a,b;cin>>a>>b;
-        cout<<(a^b)<<"\n";
+	string s;cin>>s;
+
+	ll n=s.size();
+
+	//check whether the given string is pallindrome or not
+	ll i=0,j=n-1,flag=0;
+	while(i<j){
+        if(s[i]!=s[j]){
+            flag=1;
+            break;
+        }
+        i++,j--;
 	}
 
+	if(!flag)
+	    cout<<0;
+    else{
+        cout<<"3\n";
+        cout<<"R "<<n-1<<"\n";
+        cout<<"L "<<n<<"\n";
+        cout<<"L "<<2<<"\n";
+    }
+	
 	return 0;
 }
 
