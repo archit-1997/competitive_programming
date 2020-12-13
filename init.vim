@@ -1,12 +1,8 @@
-"*****************************************
-"Name 	:	Archit Singh             *
-"Email	:	architsingh456@gmail.com *
-"GitHub :	archit-1997              *
-"*****************************************
+"Name 	:	Archit Singh             
+"Email	:	architsingh456@gmail.com 
+"GitHub :	archit-1997              
 
-"----------------------------------------------
-"Neovim Configuration File
-"----------------------------------------------
+"Vim Configuration File
 
 
 
@@ -14,7 +10,6 @@
 set nu
 set relativenumber
 syntax on
-" colorscheme zellner
 colorscheme darktheme
 let g:NERDTreeWinPos = "right"
 set foldmethod=indent
@@ -32,36 +27,27 @@ set numberwidth=5
 set linespace=3
 set splitright
 set termguicolors
-"-----------------------------------------------
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
 "Enable folding with the spacebar
 nnoremap <space> za
-"----------------------------------------------
 
 
-"----------------------------------------------
-"Competitive Programming 
-"---------------------------------------------
 
-"Compiling a .cpp program
+"Compiling .cpp program
 autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o %:r && ./%:r <cr>
 
-"----------------------------------------------
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
 
-"----------------------------------------------
-"System date and time settings
-"----------------------------------------------
 let g:airline_section_b = '%{strftime(" %d %b %Y %H:%M")}'
-"----------------------------------------------
 
 
-"----------------------------------------------
 "For formatting the file
-"----------------------------------------------
 au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.rkt,*.h
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -73,43 +59,19 @@ au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.rkt,*.h
 
 
 set encoding=utf-8
-"----------------------------------------------
 
 
-"----------------------------------------------
-"Airline settings
-"----------------------------------------------
-" enable tabline
-let g:airline#extensions#tabline#enabled = 1
-
-" enable powerline fonts
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'hybrid'
 
 " Always show tabs
 set showtabline=10
 
-set noshowmode
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-"----------------------------------------------
 " airline symbols
-"----------------------------------------------
- let g:airline_symbols.branch = ''
- let g:airline_symbols.readonly = '牢'
-"----------------------------------------------
 
-"----------------------------------------------
 "leader for nvim"
-"----------------------------------------------
 let mapleader = " "
-"----------------------------------------------
 
 
-"----------------------------------------------
 "leader keybindings
-"----------------------------------------------
 
 nmap <leader>so	:source $MYVIMRC<CR>
 nmap <leader>s 	:w<CR>
@@ -124,38 +86,26 @@ nmap <leader>o	:tabedit
 nmap <leader>j	:tabn<CR>
 "For opening a new tab to the right
 nmap <leader>n	:tabnew<CR>
-"----------------------------------------------
 
 
-"----------------------------------------------
-"Full screen using ctrl+Enter
-"----------------------------------------------
 
-"----------------------------------------------
 "Ale lint settings
-"----------------------------------------------
 let g:ale_lint_on_enter = 1
 let g:ale_linters = {'cpp': ['clang']}
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_delay=100
 
 
-"-----------------------------------------
 "CtrlP fuzzy search plugin
-"-----------------------------------------
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_show_hidden=1
 set wildignore+=.git
 let g:ctrlp_working_path_mode = 'ra'
 
-"-----------------------------------------
 
 
-"----------------------------------------------
 "vim plug plugin
-"----------------------------------------------
-
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'Shougo/vimproc.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -171,5 +121,4 @@ Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
 Plug 'kamykn/dark-theme.vim'
 call plug#end()
-"---------------------------------------------
 
