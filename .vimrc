@@ -5,12 +5,12 @@
 "Vim Configuration File
 
 
-
 "Basic configurations
 set nu
 set relativenumber
-syntax on
-colorscheme darktheme
+set bg=dark
+colorscheme gruvbox
+syntax on 
 let g:NERDTreeWinPos = "right"
 set foldmethod=indent
 set clipboard=unnamed
@@ -28,6 +28,7 @@ set linespace=3
 set splitright
 set termguicolors
 
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -35,16 +36,8 @@ set foldlevel=99
 nnoremap <space> za
 
 
-
 "Compiling .cpp program
 autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o %:r && ./%:r <cr>
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-
-let g:airline_section_b = '%{strftime(" %d %b %Y %H:%M")}'
 
 
 "For formatting the file
@@ -61,11 +54,9 @@ au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.rkt,*.h
 set encoding=utf-8
 
 
-
 " Always show tabs
 set showtabline=10
 
-" airline symbols
 
 "leader for nvim"
 let mapleader = " "
@@ -88,7 +79,6 @@ nmap <leader>j	:tabn<CR>
 nmap <leader>n	:tabnew<CR>
 
 
-
 "Ale lint settings
 let g:ale_lint_on_enter = 1
 let g:ale_linters = {'cpp': ['clang']}
@@ -103,7 +93,6 @@ set wildignore+=.git
 let g:ctrlp_working_path_mode = 'ra'
 
 
-
 "vim plug plugin
 call plug#begin('~/.vim/plugged')
 Plug 'Shougo/vimproc.vim'
@@ -111,14 +100,11 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
-Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'tibabit/vim-templates'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
-Plug 'kamykn/dark-theme.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
