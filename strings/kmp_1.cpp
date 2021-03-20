@@ -1,3 +1,4 @@
+//this is the kmp algorithm with optimized complexity
 #include<bits/stdc++.h> 
 using namespace std;
 
@@ -19,6 +20,9 @@ int main(){
             j++;
         pi[i]=j;
     }
+
+    for(int i=0;i<n;i++)
+        cout<<pi[i];
 
     return 0;
 }
