@@ -8,8 +8,6 @@
 "Basic configurations
 set nu
 set relativenumber
-set bg=dark
-colorscheme gruvbox
 syntax on 
 let g:NERDTreeWinPos = "right"
 set foldmethod=indent
@@ -66,10 +64,15 @@ let mapleader = " "
 
 nmap <leader>so	:source $MYVIMRC<CR>
 nmap <leader>s 	:w<CR>
-nmap <leader>q	:wq<CR>
+nmap <leader>q  :q<CR>
 nmap <leader>f	:qa!<CR>
 nmap <leader>t 	:NERDTreeToggle<CR>
 nmap <leader>d  :1,$d<CR>
+
+
+"split screen key bindings
+nmap <leader>v  :vsp<CR>
+nmap <leader>h  :sp<CR>
 
 "For opening files in the new tab and then type the file name
 nmap <leader>o	:tabedit
@@ -106,5 +109,6 @@ Plug 'tibabit/vim-templates'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
 Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
