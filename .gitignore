@@ -1,0 +1,14 @@
+
+# pattern to remove binaries without extension
+# remove everything
+*
+# do not remove files with extension
+!*.*
+# do not remove any directory
+!*/
+# remove the .txt files
+**/*.txt
+
+.DS_Store
+
+**/*.exe
