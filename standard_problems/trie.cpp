@@ -5,8 +5,8 @@
  * strings
  */
 
-// NOTE : This code only searches, inserts and deletes strings into the
-// dictionary Prefix operation hasn't been implemented yet
+// NOTE : This code only searches, inserts and deletes strings into the dictionary
+//  Prefix operation hasn't been implemented yet
 
 #include <bits/stdc++.h>
 using namespace std;

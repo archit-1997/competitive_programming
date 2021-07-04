@@ -1,4 +1,4 @@
-// Chochu Singh
+// Archit' Singh
 // Bellman Ford Algorithm
 #include <bits/stdc++.h>
 using namespace std;
