@@ -1,79 +1,89 @@
-//
-// Created by Archit Singh on 16/05/21.
-//
+/**
+ * @author      : archit
+ * @GitHub      : archit-1997
+ * @Email       : architsingh456@gmail.com
+ * @file        : fenwickTree.cpp
+ * @created     : Sunday Aug 08, 2021 18:22:56 IST
+ */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-int findNext(int n) { return n + (n & -n); }
-
-int findParent(int n) { return n - (n & -n); }
-
-// exactly same as construct fenwick tree
-void updateFenwickTree(vector<int> &fenwickTree, int value, int index) {
-  int n = fenwickTree.size();
-  if (index >= n)
-    return;
-  fenwickTree[index] += value;
-  int pos = findNext(index);
-  updateFenwickTree(fenwickTree, value, pos);
+void init(){
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
 }
 
-void constructFenwickTree(vector<int> &fenwickTree, int value, int index) {
-  int n = fenwickTree.size();
-  if (index >= n)
-    return;
-  fenwickTree[index] += value;
-  // find next position
-  int pos = findNext(index);
-  constructFenwickTree(fenwickTree, value, pos);
+int findNextIndex(int index){
+    return (index+(index&-index));
 }
 
-void findSum(vector<int> &fenwickTree, int index, int &sum) {
-  if (index <= 0)
-    return;
-  sum += fenwickTree[index];
-  int pos = findParent(index);
-  findSum(fenwickTree, pos, sum);
+int findParent(int index){
+    return (index-(index&-index));
 }
 
-void init() {
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
+void constructTree(vector<int> &ft,int val,int index){
+    int n=ft.size();
+    
+    //if we have gone out of bounds
+    if(index>=n)
+        return;
+
+    ft[index]+=val;
+    //find the next index
+    int nextIndex=findNextIndex(index);
+    constructTree(ft,val,nextIndex);
 }
 
-int main() {
+int findSum(vector<int> &ft,int index){
+    if(index<=0)
+        return 0;
+    //find the parent of index
+    int parIndex=findParent(index);
+    return ft[index]+findSum(ft,parIndex);
+}
 
-  init();
-  int n;
-  cin >> n;
-  vector<int> v(n);
-  for (int i = 0; i < n; i++)
-    cin >> v[i];
+int main(){
 
-  vector<int> fenwickTree(n + 1, 0);
+    init();
 
-  // construct the fenwick tree
-  for (int i = 1; i < n + 1; i++) {
-    // fenwicktree : value : start index
-    constructFenwickTree(fenwickTree, v[i - 1], i);
-  }
+    int n;cin>>n;
 
-  // print the contents of the fenwick tree
-  for (int i = 0; i < n + 1; i++)
-    cout << fenwickTree[i] << "\n";
+    vector<int> v(n);
 
-  // prefix sum queries
-  int q;
-  cin >> q;
-  for (int i = 0; i < q; i++) {
-    int index;
-    cin >> index;
-    // find the sum from 0 to index
-    int res = 0;
-    findSum(fenwickTree, index + 1, res);
-    cout << res << "\n";
-  }
+    for(int i=0;i<n;i++)
+        cin>>v[i];
 
-  return 0;
+    //construct a fenwick tree
+    vector<int> ft(n+1,0);
+
+    //construct the fenwick tree
+    for(int i=1;i<n+1;i++){
+        constructTree(ft,v[i-1],i);
+    }
+
+    //respond to the sum and update queries
+    //0 : sum (index : find the prefix sum from 0 to index)
+    //1 : update (index,val : set index i=val)
+    int q;cin>>q;
+    for(int i=0;i<q;i++){
+        int choice;cin>>choice;
+        if(choice){
+            //this is a sum query
+            int index;cin>>index;
+            //pass index+1 to the fenwick tree
+            int ans=findSum(ft,index+1);
+            cout<<ans<<"\n";
+        }
+        else{
+            //this is an update query
+            int index,val;cin>>index>>val;
+            //find the difference that you have to update
+            int diff=v[index]-val;
+            //add this diff from the index
+            constructTree(ft,v[index-1],index);
+        }
+    }
+
+    return 0;
 }
